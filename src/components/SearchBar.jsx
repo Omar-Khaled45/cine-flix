@@ -1,12 +1,12 @@
 import { Input } from "@/components/ui/input";
 import useDebounce from "@/hooks/useDebounce";
 import { services } from "@/services/api";
-import { Image, Search } from "lucide-react";
+import { Image, Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const SearchBar = ({ handleShowDetails }) => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([1]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const searchRef = useRef();
@@ -39,12 +39,11 @@ const SearchBar = ({ handleShowDetails }) => {
       try {
         const res = await services.searchMovie(debouncedQuery.trim());
 
-        if (res && res.data.results && Array.isArray(res.data.results)) {
-          const filteredResults = res.data.results.filter(
+        if (res && res.results && Array.isArray(res.results)) {
+          const filteredResults = res.results.filter(
             (movie) =>
               movie.poster_path !== null || movie.backdrop_path !== null,
           );
-          console.log(filteredResults);
           setResults(filteredResults);
           setIsOpen(true);
         } else {
@@ -69,12 +68,20 @@ const SearchBar = ({ handleShowDetails }) => {
     >
       <Search className="absolute top-1/2 left-3 -translate-y-1/2" size={15} />
       <Input
-        className="bg-muted focus-visible:ring-none caret-muted-foreground placeholder:text-muted-foreground focus-visible:ring-destructive rounded-xl border-none px-10 py-5 focus-visible:ring-2"
-        placeholder="Search Movies..."
+        className="bg-muted focus-visible:ring-none caret-muted-foreground placeholder:text-muted-foreground focus-visible:ring-destructive rounded-xl border-none px-8 focus-visible:ring-2 md:px-10"
+        placeholder="Search"
+        value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {isOpen && (
-        <div className="border-border bg-background custom-scrollbar absolute top-12 max-h-72 w-full overflow-y-scroll rounded-lg border py-2">
+      {query && (
+        <X
+          className="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer duration-300 hover:stroke-white"
+          size={20}
+          onClick={() => setQuery("")}
+        />
+      )}
+      {isOpen && query && (
+        <div className="border-border custom-scrollbar bg-background absolute top-12 left-1/2 max-h-72 w-[300px] -translate-x-1/2 overflow-y-scroll rounded-lg border py-2 md:right-0 md:w-full">
           {isLoading ? (
             <div className="flex flex-row items-center justify-center gap-2 p-4">
               <div className="bg-destructive h-3 w-3 animate-bounce rounded-full"></div>

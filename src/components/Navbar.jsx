@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 const Navbar = ({ openWatchlist, watchlist, handleShowDetails }) => {
   return (
     <header className="bg-background/80 border-border sticky top-0 z-1 container border-b backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="relative container flex h-16 items-center justify-between">
         <div className="flex items-center text-white">
           <div className="bg-destructive flex h-8 w-8 items-center justify-center rounded-lg">
             <Film size={20} />
@@ -25,7 +25,8 @@ const Navbar = ({ openWatchlist, watchlist, handleShowDetails }) => {
                 {watchlist.length}
               </span>
             )}
-            <Menu size={20} /> Watchlist
+            <Menu size={20} />{" "}
+            <span className="hidden md:block">Watchlist</span>
           </Button>
         </div>
       </div>

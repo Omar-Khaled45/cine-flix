@@ -13,7 +13,7 @@ const FilterBar = ({ genres, filters, setFilters }) => {
     <div className="mb-8 flex gap-4">
       <div className="text-muted-foreground flex items-center gap-2 text-sm">
         <Funnel size={16} />
-        <span>Filter & Sort:</span>
+        <span className="hidden md:inline">Filter & Sort:</span>
       </div>
       <div>
         <Select

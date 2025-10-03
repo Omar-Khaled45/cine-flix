@@ -61,9 +61,9 @@ const useMovies = () => {
         ]);
 
       setMovieDetails({
-        details: movieDetailsData.data,
-        credits: movieCreditsData.data,
-        videos: movieVideosData.data,
+        details: movieDetailsData,
+        credits: movieCreditsData,
+        videos: movieVideosData,
       });
     } catch (err) {
       console.log("Failed to fetch movie details: ", err);
@@ -71,7 +71,7 @@ const useMovies = () => {
   };
 
   useEffect(() => {
-    services.getGenre().then((res) => setGenres(res.data.genres));
+    services.getGenre().then((res) => setGenres(res.genres));
     fetchMovies();
   }, []);
 

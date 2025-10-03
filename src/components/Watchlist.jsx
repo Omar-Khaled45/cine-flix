@@ -58,35 +58,39 @@ const Watchlist = ({
 
       {/* Sidebar */}
       <div
-        className={`bg-card border-border fixed top-0 z-20 min-h-screen w-[320px] border-1 transition-all duration-400 md:w-[400px] ${isOpened ? "right-0" : "-right-[400px]"}`}
+        className={`bg-card border-border fixed top-0 z-20 flex h-screen w-[320px] flex-col border-1 transition-all duration-400 md:w-[400px] ${isOpened ? "right-0" : "-right-[400px]"}`}
       >
         {/* Header */}
-        <div className="border-border space-y-2 border-b p-6">
-          <div className="flex items-center justify-between">
-            <h4 className="text-foreground text-xl font-bold">My Watchlist</h4>
+        <div>
+          <div className="border-border space-y-2 border-b p-6">
+            <div className="flex items-center justify-between">
+              <h4 className="text-foreground text-xl font-bold">
+                My Watchlist
+              </h4>
+              <button
+                className="text-foreground transition-color hover:bg-accent flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg duration-300"
+                onClick={closeWatchlist}
+              >
+                <X />
+              </button>
+            </div>
+            <div className="text-muted-foreground text-sm">
+              {watchlist.length} movies
+            </div>
+          </div>
+          {/* Clear button */}
+          {watchlist.length > 0 && (
             <button
-              className="text-foreground transition-color hover:bg-accent flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg duration-300"
-              onClick={closeWatchlist}
+              className="border-border text-destructive md:hover:text-destructive/50 cursor-pointer border-b p-3 text-left text-sm md:transition-all md:duration-300"
+              onClick={clearWatchlist}
             >
-              <X />
+              Clear All Movies
             </button>
-          </div>
-          <div className="text-muted-foreground text-sm">
-            {watchlist.length} movies
-          </div>
+          )}
         </div>
-        {/* Clear button */}
-        {watchlist.length > 0 && (
-          <button
-            className="border-border text-destructive md:hover:text-destructive/50 cursor-pointer border-b p-3 text-left text-sm md:transition-all md:duration-300"
-            onClick={clearWatchlist}
-          >
-            Clear All Movies
-          </button>
-        )}
 
         {/* Content */}
-        <div className="p-6">
+        <div className="custom-scrollbar overflow-y-scroll p-6">
           {watchlist.length === 0 ? (
             <div className="space-y-3 text-center">
               <div className="text-muted-foreground bg-muted mx-auto flex h-14 w-14 items-center justify-center rounded-full text-3xl">
