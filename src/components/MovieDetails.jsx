@@ -38,12 +38,12 @@ const MovieDetails = ({
             alt="The Thursday Murder Club"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent dark:from-black"></div>
           <div className="absolute right-6 bottom-6 left-6 space-y-2">
             <h2 className="text-foreground text-3xl font-bold">
               {movieDetails?.title}
             </h2>
-            <div className="text-muted-foreground flex items-center gap-4">
+            <div className="text-foreground flex items-center gap-4">
               <div className="flex items-center gap-1">
                 <Star size={16} className="fill-amber-300 stroke-amber-300" />
                 <span>{rating}</span>
@@ -142,7 +142,7 @@ const MovieDetails = ({
           </div>
         </div>
         <button
-          className="text-foreground absolute top-5 right-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/60 transition-colors duration-500 hover:bg-black/80"
+          className="absolute top-5 right-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-colors duration-500 hover:bg-black/80"
           onClick={() => clearDetails()}
         >
           <X />

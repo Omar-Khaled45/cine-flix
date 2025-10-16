@@ -35,8 +35,6 @@ export const services = {
   },
 
   getMovieDetails: (movie_id) => {
-    // return axiosInstance.get(`3/movie/${movie_id}$`, config);
-
     return returnRes(`3/movie/${movie_id}$`);
   },
 

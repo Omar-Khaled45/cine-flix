@@ -3,8 +3,10 @@ import Footer from "@/components/Footer";
 import MovieDetails from "@/components/MovieDetails";
 import MovieSection from "@/components/MovieSection";
 import Navbar from "@/components/Navbar";
+import SearchList from "@/components/SearchList";
 import Watchlist from "@/components/Watchlist";
 import useMovies from "@/hooks/useMovies";
+import useTheme from "@/hooks/useTheme";
 import useWatchlist from "@/hooks/useWatchlist";
 import { useState } from "react";
 
@@ -23,17 +25,23 @@ const Main = () => {
   const { watchlist, addToWatchlist, removeFromWatchlist, clearWatchlist } =
     useWatchlist();
 
+  const { theme, setTheme } = useTheme();
+
   const [isWatchlistOpened, setIsWatchlistOpened] = useState(false);
+  const [isSearchlistOpened, setIsSearchlistOpened] = useState(false);
 
   return (
     <>
       <Navbar
         openWatchlist={() => setIsWatchlistOpened(true)}
+        openSearchlist={() => setIsSearchlistOpened(true)}
         watchlist={watchlist}
         handleShowDetails={handleShowDetails}
+        theme={theme}
+        setTheme={setTheme}
       />
 
-      <main className="px-4 py-8 sm:px-6 lg:px-8">
+      <main className="py-8">
         {movieDetails.details && (
           <MovieDetails
             movieDetails={movieDetails.details}
@@ -53,7 +61,12 @@ const Main = () => {
           removeFromWatchlist={removeFromWatchlist}
           clearWatchlist={clearWatchlist}
         />
-        <div className="-red-200 mb-12 flex flex-col items-center justify-center text-center">
+        <SearchList
+          isOpened={isSearchlistOpened}
+          setIsOpened={setIsSearchlistOpened}
+          handleShowDetails={handleShowDetails}
+        />
+        <div className="mb-12 flex flex-col items-center justify-center px-10 text-center">
           <h1 className="text-foreground mb-3 text-3xl font-bold md:text-5xl">
             Discover Amazing Movies
           </h1>
