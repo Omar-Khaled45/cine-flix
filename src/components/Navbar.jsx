@@ -52,7 +52,7 @@ const Navbar = ({
                 {watchlist.length}
               </span>
             )}
-            <Menu size={20} />{" "}
+            <Menu size={20} />
             <span className="hidden md:block">Watchlist</span>
           </Button>
         </div>

@@ -12,6 +12,12 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
 
   const debouncedQuery = useDebounce(query, 500);
 
+  const closeMenu = () => {
+    setIsOpened(false);
+    setResults([]);
+    setQuery("");
+  };
+
   useEffect(() => {
     if (!debouncedQuery.trim()) {
       setResults([]);
@@ -53,7 +59,7 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
       {/* Overlay */}
       <div
         className={`fixed inset-0 z-10 h-full w-full bg-black/50 backdrop-blur-sm transition-all duration-400 ${!isOpened ? "invisible opacity-0" : "visible opacity-100"}`}
-        onClick={() => setIsOpened(false)}
+        onClick={closeMenu}
       ></div>
 
       {/* Sidebar */}
@@ -68,7 +74,7 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
             </h2>
             <X
               className="transform cursor-pointer duration-300 hover:stroke-white"
-              onClick={() => setIsOpened(false)}
+              onClick={closeMenu}
             />
           </div>
           <div className="text-muted-foreground relative">
@@ -99,7 +105,7 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
 
         {/* Content */}
         {query && (
-          <div className="p-4">
+          <div className="custom-scrollbar overflow-y-scroll p-4">
             {isLoading ? (
               <div className="flex flex-row items-center justify-center gap-2 p-4">
                 <div className="bg-destructive h-3 w-3 animate-bounce rounded-full"></div>
