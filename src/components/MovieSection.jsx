@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -14,6 +15,8 @@ const MovieSection = ({
   isLoading,
   handleShowDetails,
 }) => {
+  console.log("re render MovieSection");
+
   return (
     <div className="text-foreground space-y-3 md:space-y-8">
       <div className="flex items-center justify-between">
@@ -77,4 +80,4 @@ const MovieSection = ({
   );
 };
 
-export default MovieSection;
+export default React.memo(MovieSection);

@@ -8,8 +8,6 @@ const Navbar = ({
   theme,
   setTheme,
 }) => {
-  console.log("re-render Navbar");
-
   return (
     <header className="bg-background/80 border-border sticky top-0 z-1 border-b backdrop-blur-md">
       <div className="relative container flex h-16 items-center justify-between">

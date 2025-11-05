@@ -1,5 +1,5 @@
 import { services } from "@/services/api";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const useMovies = () => {
   const [movies, setMovies] = useState({
@@ -51,7 +51,7 @@ const useMovies = () => {
   };
 
   // Get details of movie based on the id
-  const handleShowDetails = async (id) => {
+  const handleShowDetails = useCallback(async (id) => {
     try {
       const [movieDetailsData, movieCreditsData, movieVideosData] =
         await Promise.all([
@@ -68,7 +68,7 @@ const useMovies = () => {
     } catch (err) {
       console.log("Failed to fetch movie details: ", err);
     }
-  };
+  }, []);
 
   useEffect(() => {
     services.getGenre().then((res) => setGenres(res.genres));
