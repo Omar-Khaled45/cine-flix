@@ -25,6 +25,8 @@ const Main = () => {
   const { watchlist, addToWatchlist, removeFromWatchlist, clearWatchlist } =
     useWatchlist();
 
+  console.log("re-render Main");
+
   const { theme, setTheme } = useTheme();
 
   const [isWatchlistOpened, setIsWatchlistOpened] = useState(false);

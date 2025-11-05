@@ -58,7 +58,7 @@ const Watchlist = ({
 
       {/* Sidebar */}
       <div
-        className={`bg-card border-border fixed top-0 z-20 flex h-screen w-[320px] flex-col border-1 transition-all duration-400 md:w-[400px] ${isOpened ? "right-0" : "-right-[400px]"}`}
+        className={`bg-card border-border fixed top-0 right-0 z-20 flex h-screen w-[320px] flex-col border-1 transition-all duration-400 md:w-[400px] ${isOpened ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Header */}
         <div>

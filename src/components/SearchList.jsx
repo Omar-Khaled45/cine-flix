@@ -64,7 +64,7 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
 
       {/* Sidebar */}
       <div
-        className={`bg-card border-border fixed top-0 z-20 flex h-screen w-[320px] flex-col border-1 transition-all duration-400 md:w-[400px] ${isOpened ? "left-0" : "-left-[400px]"}`}
+        className={`bg-card border-border fixed top-0 left-0 z-20 flex h-screen w-[320px] flex-col border-1 transition-all duration-400 md:w-[400px] ${isOpened ? "translate-x-0" : "-translate-x-full"}`}
       >
         {/* Header */}
         <div className="border-border space-y-6 border-b-1 p-6">
