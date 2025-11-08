@@ -81,7 +81,7 @@ const Watchlist = ({
           {/* Clear button */}
           {watchlist.length > 0 && (
             <button
-              className="border-border text-destructive md:hover:text-destructive/50 cursor-pointer border-b p-3 text-left text-sm md:transition-all md:duration-300"
+              className="border-border text-destructive md:hover:text-destructive/50 w-full cursor-pointer border-b p-3 text-left text-sm md:transition-all md:duration-300"
               onClick={clearWatchlist}
             >
               Clear All Movies

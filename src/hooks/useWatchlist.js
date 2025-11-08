@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useWatchlist = () => {
-  const [watchlist, setWatchlist] = useState([]);
+  const [watchlist, setWatchlist] = useState(() => {
+    const storedWatchlist = JSON.parse(localStorage.getItem("watchlist"));
+
+    return storedWatchlist || [];
+  });
 
   const addToWatchlist = (movie) => {
     const newItem = {
@@ -25,6 +29,10 @@ const useWatchlist = () => {
   const clearWatchlist = () => {
     setWatchlist([]);
   };
+
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }, [watchlist]);
 
   return { watchlist, addToWatchlist, removeFromWatchlist, clearWatchlist };
 };

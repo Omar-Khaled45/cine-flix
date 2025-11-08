@@ -21,7 +21,7 @@ const Navbar = ({
           {theme === "dark" ? (
             <button
               className="text-muted-foreground hover:bg-primary/60 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full duration-200"
-              onClick={() => setTheme("")}
+              onClick={() => setTheme("light")}
             >
               <Sun size={18} />
             </button>
