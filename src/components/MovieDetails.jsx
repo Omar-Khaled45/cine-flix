@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Calendar, Check, Clock, Plus, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import useClose from "@/hooks/useClose";
+import { useEffect } from "react";
 
 const MovieDetails = ({
   movieDetails,
@@ -28,6 +29,13 @@ const MovieDetails = ({
 
   // Close movie details by pressing escape key
   useClose(onClear);
+
+  // Change document title
+  useEffect(() => {
+    document.title = movieDetails?.title;
+
+    return () => (document.title = "CineFlix");
+  }, [movieDetails]);
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center p-4">
