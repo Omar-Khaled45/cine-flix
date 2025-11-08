@@ -1,12 +1,13 @@
+import useClose from "@/hooks/useClose";
 import { Star, Trash2, X } from "lucide-react";
 
 const Watchlist = ({
   isOpened,
-  closeWatchlist,
+  onClose,
   watchlist,
   removeFromWatchlist,
   clearWatchlist,
-  handleShowDetails,
+  onShowDetails,
 }) => {
   const renderList = watchlist.map((movie) => (
     <li
@@ -15,7 +16,7 @@ const Watchlist = ({
     >
       <button
         className="flex cursor-pointer gap-3 text-left"
-        onClick={() => handleShowDetails(movie.id)}
+        onClick={() => onShowDetails(movie.id)}
       >
         <div className="shrink-0">
           <img
@@ -48,12 +49,15 @@ const Watchlist = ({
     </li>
   ));
 
+  // Close watchlist by pressing escape key
+  useClose(onClose);
+
   return (
     <>
       {/* Overlay */}
       <div
         className={`fixed inset-0 z-10 h-full w-full bg-black/50 backdrop-blur-sm transition-all duration-400 ${!isOpened ? "invisible opacity-0" : "visible opacity-100"}`}
-        onClick={closeWatchlist}
+        onClick={onClose}
       ></div>
 
       {/* Sidebar */}
@@ -69,7 +73,7 @@ const Watchlist = ({
               </h4>
               <button
                 className="text-foreground transition-color hover:bg-accent flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg duration-300"
-                onClick={closeWatchlist}
+                onClick={onClose}
               >
                 <X />
               </button>

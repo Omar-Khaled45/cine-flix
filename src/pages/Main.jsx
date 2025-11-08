@@ -29,13 +29,13 @@ const Main = () => {
   const { theme, setTheme } = useTheme();
 
   const [isWatchlistOpened, setIsWatchlistOpened] = useState(false);
-  const [isSearchlistOpened, setIsSearchlistOpened] = useState(false);
+  const [isSearchListOpened, setIsSearchListOpened] = useState(false);
 
   return (
     <>
       <Navbar
         openWatchlist={() => setIsWatchlistOpened(true)}
-        openSearchlist={() => setIsSearchlistOpened(true)}
+        openSearchList={() => setIsSearchListOpened(true)}
         watchlist={watchlist}
         handleShowDetails={handleShowDetails}
         theme={theme}
@@ -48,7 +48,7 @@ const Main = () => {
             movieDetails={movieDetails.details}
             movieCredits={movieDetails.credits}
             movieVideos={movieDetails.videos}
-            clearDetails={clearDetails}
+            onClear={clearDetails}
             addToWatchlist={addToWatchlist}
             removeFromWatchlist={removeFromWatchlist}
             watchlist={watchlist}
@@ -57,15 +57,15 @@ const Main = () => {
         <Watchlist
           isOpened={isWatchlistOpened}
           watchlist={watchlist}
-          handleShowDetails={handleShowDetails}
-          closeWatchlist={() => setIsWatchlistOpened(false)}
+          onShowDetails={handleShowDetails}
+          onClose={() => setIsWatchlistOpened(false)}
           removeFromWatchlist={removeFromWatchlist}
           clearWatchlist={clearWatchlist}
         />
         <SearchList
-          isOpened={isSearchlistOpened}
-          setIsOpened={setIsSearchlistOpened}
-          handleShowDetails={handleShowDetails}
+          isOpened={isSearchListOpened}
+          setIsOpened={setIsSearchListOpened}
+          onShowDetails={handleShowDetails}
         />
         <Hero />
         <div className="container">
@@ -79,25 +79,25 @@ const Main = () => {
               isLoading={isLoading}
               title={"🔥 Trending Now"}
               results={filteredMovies.trending}
-              handleShowDetails={handleShowDetails}
+              onShowDetails={handleShowDetails}
             />
             <MovieSection
               isLoading={isLoading}
               title={"🎬 Popular Movies"}
               results={filteredMovies.popular}
-              handleShowDetails={handleShowDetails}
+              onShowDetails={handleShowDetails}
             />
             <MovieSection
               isLoading={isLoading}
               title={"📅 Coming Soon"}
               results={filteredMovies.upComing}
-              handleShowDetails={handleShowDetails}
+              onShowDetails={handleShowDetails}
             />
             <MovieSection
               isLoading={isLoading}
               title={"⭐ Top Rated"}
               results={filteredMovies.topRated}
-              handleShowDetails={handleShowDetails}
+              onShowDetails={handleShowDetails}
             />
           </div>
         </div>

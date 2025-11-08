@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const Navbar = ({
   openWatchlist,
   watchlist,
-  openSearchlist,
+  openSearchList,
   theme,
   setTheme,
 }) => {
@@ -19,29 +19,29 @@ const Navbar = ({
         </div>
         <div className="flex items-center space-x-2">
           {theme === "dark" ? (
-            <button
-              className="text-muted-foreground hover:bg-primary/60 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full duration-200"
+            <Button
+              className="text-muted-foreground hover:bg-primary/60 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-transparent duration-200"
               onClick={() => setTheme("light")}
             >
               <Sun size={18} />
-            </button>
+            </Button>
           ) : (
-            <button
-              className="text-muted-foreground hover:bg-primary/60 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full duration-200"
+            <Button
+              className="text-muted-foreground hover:bg-primary/60 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-transparent duration-200"
               onClick={() => setTheme("dark")}
             >
               <Moon size={18} />
-            </button>
+            </Button>
           )}
-          <button
+          <Button
             className="bg-primary group text-muted-foreground transform cursor-pointer rounded-xl p-3 duration-300 hover:opacity-80"
-            onClick={openSearchlist}
+            onClick={openSearchList}
           >
             <Search
               size={15}
               className="group-hover:stroke-destructive transform duration-300 group-hover:scale-110"
             />
-          </button>
+          </Button>
           <Button
             size="lg"
             className="hover:bg-primary/80 text-foreground relative cursor-pointer text-lg"

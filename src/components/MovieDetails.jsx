@@ -1,12 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { Calendar, Check, Clock, Plus, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import useClose from "@/hooks/useClose";
 
 const MovieDetails = ({
   movieDetails,
   movieCredits,
   movieVideos,
-  clearDetails,
+  onClear,
   addToWatchlist,
   removeFromWatchlist,
   watchlist,
@@ -25,11 +26,14 @@ const MovieDetails = ({
   // Videos
   const trailer = movieVideos?.results.find((el) => el.type === "Trailer");
 
+  // Close movie details by pressing escape key
+  useClose(onClear);
+
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center p-4">
       <div
         className="absolute -z-10 h-full w-full bg-black/80 backdrop-blur-md"
-        onClick={() => clearDetails()}
+        onClick={onClear}
       ></div>
       <Card className="custom-scrollbar bg-card relative max-h-[90vh] w-full max-w-4xl gap-0 overflow-y-auto border-none py-0">
         <div className="card-header relative h-64 md:h-80">
@@ -143,7 +147,7 @@ const MovieDetails = ({
         </div>
         <button
           className="absolute top-5 right-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-colors duration-500 hover:bg-black/80"
-          onClick={() => clearDetails()}
+          onClick={onClear}
         >
           <X />
         </button>

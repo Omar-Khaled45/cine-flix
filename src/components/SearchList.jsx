@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import useDebounce from "@/hooks/useDebounce";
 import { services } from "@/services/api";
+import useClose from "@/hooks/useClose";
 
-const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
+const SearchList = ({ isOpened, setIsOpened, onShowDetails }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +18,8 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
     setResults([]);
     setQuery("");
   };
+
+  useClose(closeMenu);
 
   useEffect(() => {
     if (!debouncedQuery.trim()) {
@@ -123,7 +126,7 @@ const SearchList = ({ isOpened, setIsOpened, handleShowDetails }) => {
                       <button
                         className="flex w-full cursor-pointer gap-3 text-left"
                         onClick={() => {
-                          handleShowDetails(movie.id);
+                          onShowDetails(movie.id);
                           setQuery("");
                           setIsOpened(false);
                         }}

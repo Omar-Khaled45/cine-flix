@@ -9,12 +9,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import MovieCard from "./MovieCard";
 
-const MovieSection = ({
-  results = [],
-  title,
-  isLoading,
-  handleShowDetails,
-}) => {
+const MovieSection = ({ results = [], title, isLoading, onShowDetails }) => {
   return (
     <div className="text-foreground space-y-3 md:space-y-8">
       <div className="flex items-center justify-between">
@@ -46,7 +41,7 @@ const MovieSection = ({
                   <CarouselItem
                     key={movie.id}
                     className="basis-auto"
-                    onClick={() => handleShowDetails(movie.id)}
+                    onClick={() => onShowDetails(movie.id)}
                   >
                     <div className="w-45 md:w-56">
                       <MovieCard
