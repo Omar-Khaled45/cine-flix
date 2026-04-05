@@ -1,12 +1,35 @@
-# React + Vite
+<img width="1782" height="930" alt="image" src="https://github.com/user-attachments/assets/b2cc262f-5329-4f1b-8cf2-c26f1b35645e" />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# 🎬 CineFlix
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern movie browsing web application inspired by Netflix, built using React. It allows users to explore trending movies, search in real-time, and manage a personalized watchlist.
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔗 Live Demo: [Click here to preview.](https://cinee-flix.netlify.app/)  
+
+
+## ✨ Features
+
+- 🔍 Real-time movie search
+- 🎞️ Browse trending and popular movies
+- 🎯 Filter and sort movies dynamically
+- 📄 Detailed movie pages (overview, cast, trailers)
+- ⭐ Add/remove movies to a persistent watchlist
+- 📱 Fully responsive design
+
+## 🛠️ Tech Stack
+
+- React.js
+- Tailwind CSS
+- Axios
+- TMDB API
+
+## 🧠 What I Learned
+
+- Handling API integration and async data fetching using Axios
+- Implementing debounced search for better performance and UX
+- Managing global and local state efficiently in React
+- Building reusable and responsive UI components with Tailwind CSS
+- Using local storage to persist user data (watchlist)
