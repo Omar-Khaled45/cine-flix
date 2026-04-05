@@ -7,7 +7,7 @@ A modern movie browsing web application inspired by Netflix, built using React. 
 
 ## 🚀 Live Demo
 
-🔗 Live Demo: [Click here to preview.](https://cinee-flix.netlify.app/)  
+🔗 [Click here to preview.](https://cinee-flix.netlify.app/)  
 
 
 ## ✨ Features
